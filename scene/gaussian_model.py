@@ -1481,8 +1481,11 @@ class GaussianModel(nn.Module):
 
                     torch.cuda.empty_cache()
 
-                feat_canvas_valid[mask_anchor_curr] = torch.cat(_feat_slice_q_list, dim=0)
-                scaling_canvas_valid[mask_anchor_curr] = torch.cat(_scaling_slice_q_list, dim=0)
+                if len(_feat_slice_q_list) > 0:
+                    feat_canvas_valid[mask_anchor_curr] = torch.cat(_feat_slice_q_list, dim=0)
+
+                if len(_scaling_slice_q_list) > 0:
+                    scaling_canvas_valid[mask_anchor_curr] = torch.cat(_scaling_slice_q_list, dim=0)
 
             if 1:
                 enc_time_inc_st_ttl[ss] = get_time()
@@ -1539,8 +1542,11 @@ class GaussianModel(nn.Module):
                         bit_scaling_inc_ttl[ss] += encoder_trinomial(mask, prob3, file_name=scaling_b_name)
                         _scaling_slice_q_list.append(_scaling_slice_q.view(-1, 6))
 
-                    feat_canvas_valid[mask_anchor_curr] = torch.cat(_feat_slice_q_list, dim=0)
-                    scaling_canvas_valid[mask_anchor_curr] = torch.cat(_scaling_slice_q_list, dim=0)
+                    if len(_feat_slice_q_list) > 0:
+                        feat_canvas_valid[mask_anchor_curr] = torch.cat(_feat_slice_q_list, dim=0)
+
+                    if len(_scaling_slice_q_list) > 0:
+                        scaling_canvas_valid[mask_anchor_curr] = torch.cat(_scaling_slice_q_list, dim=0)
                 enc_time_inc_ed_ttl[ss] = get_time()
 
             if 1:
@@ -1741,11 +1747,13 @@ class GaussianModel(nn.Module):
                     _scaling_slice_q = _scaling_slice_q.view(N_num, 6)  # [N_num, 6]
                     _scaling_slice_q_list.append(_scaling_slice_q)
 
-                _feat_curr = torch.cat(_feat_slice_q_list, dim=0)
-                _scaling_curr = torch.cat(_scaling_slice_q_list, dim=0)
+                if len(_feat_slice_q_list) > 0:
+                    _feat_curr = torch.cat(_feat_slice_q_list, dim=0)
+                    feat_canvas_valid[mask_anchor_curr] = _feat_curr
 
-                feat_canvas_valid[mask_anchor_curr] = _feat_curr
-                scaling_canvas_valid[mask_anchor_curr] = _scaling_curr
+                if len(_scaling_slice_q_list) > 0:
+                    _scaling_curr = torch.cat(_scaling_slice_q_list, dim=0)
+                    scaling_canvas_valid[mask_anchor_curr] = _scaling_curr
 
             if 1:
                 dec_time_inc_st_ttl[ss] = get_time()
@@ -1796,11 +1804,13 @@ class GaussianModel(nn.Module):
 
                         scaling_q_list.append(scaling_q)
 
-                    feat_q_curr = torch.cat(feat_q_list, dim=0)
-                    scaling_q_curr = torch.cat(scaling_q_list, dim=0)
+                    if len(feat_q_list) > 0:
+                        feat_q_curr = torch.cat(feat_q_list, dim=0)
+                        feat_canvas_valid[mask_anchor_curr] = feat_q_curr
 
-                    feat_canvas_valid[mask_anchor_curr] = feat_q_curr
-                    scaling_canvas_valid[mask_anchor_curr] = scaling_q_curr
+                    if len(scaling_q_list) > 0:
+                        scaling_q_curr = torch.cat(scaling_q_list, dim=0)
+                        scaling_canvas_valid[mask_anchor_curr] = scaling_q_curr
 
                 dec_time_inc_ed_ttl[ss] = get_time()
 
@@ -1892,4 +1902,3 @@ class GaussianModel(nn.Module):
                    f"ttl_time (w/head w/inc) {round(dec_time_ed_ttl[ss] - dec_time_st_ttl[ss], 6)}"
 
         return log_info
-
