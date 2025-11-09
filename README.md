@@ -1,4 +1,4 @@
-# [ARXIV'25] PCGS
+# [AAAI'26, Oral] PCGS
 Official Pytorch implementation of **PCGS: Progressive Compression of 3D Gaussian Splatting**.
 ## PCGS provides a progressive compression solution for on-demand applications.
 ### It enables reuse of existing bitstreams for enhenced fidelity when dynamic bandwidth or diversion storage occurs.
@@ -18,7 +18,7 @@ You are welcomed to check a series of works from our group on 3D radiance field 
 - 🏠 [HAC](https://github.com/yihangchen-ee/hac/) [ECCV'24]: efficient 3DGS compression! [[`Paper`](https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/01178.pdf)] [[`Arxiv`](https://arxiv.org/pdf/2403.14530)] [[`Project`](https://yihangchen-ee.github.io/project_hac/)]
 - 💪 [HAC++](https://github.com/yihangchen-ee/hac-plus/) [ARXIV'25]: an enhanced compression method over HAC! [[`Arxiv`](https://arxiv.org/pdf/2501.12255)] [[`Project`](https://yihangchen-ee.github.io/project_hac++/)]
 - 🚀 [FCGS](https://github.com/yihangchen-ee/fcgs/) [ICLR'25]: fast optimization-free 3DGS compression! [[`Paper`](https://openreview.net/pdf?id=DCandSZ2F1)] [[`Arxiv`](https://arxiv.org/pdf/2410.08017)] [[`Project`](https://yihangchen-ee.github.io/project_fcgs/)]
-- 🪜 [PCGS](https://github.com/yihangchen-ee/pcgs/) [ARXIV'25]: progressive 3DGS compression! [[`Arxiv`](https://arxiv.org/pdf/2503.08511)] [[`Project`](https://yihangchen-ee.github.io/project_pcgs/)]
+- 🪜 [PCGS](https://github.com/yihangchen-ee/pcgs/) [AAAI'26, Oral]: progressive 3DGS compression! [[`Arxiv`](https://arxiv.org/pdf/2503.08511)] [[`Project`](https://yihangchen-ee.github.io/project_pcgs/)]
 
 ## Overview
 <p align="left">
@@ -145,11 +145,11 @@ The code will automatically run the entire process of: **training, encoding, dec
 If you find our work helpful, please consider citing:
 
 ```bibtex
-@article{pcgs2025,
+@inproceedings{pcgs2025,
   title={PCGS: Progressive Compression of 3D Gaussian Splatting},
   author={Chen, Yihang and Li, Mengyao and Wu, Qianyi and Lin, Weiyao and Harandi, Mehrtash and Cai, Jianfei},
-  journal={arXiv preprint arXiv:2503.08511},
-  year={2025}
+  booktitle={The 40th Annual AAAI Conference on Artificial Intelligence},
+  year={2026}
 }
 ```
 
