@@ -1,5 +1,5 @@
 # [AAAI'26, Oral] PCGS
-**PCGS: Progressive Compression of 3D Gaussian Splatting**.
+## PCGS: Progressive Compression of 3D Gaussian Splatting.
 ## PCGS provides a progressive compression solution for on-demand applications.
 ### It enables reuse of existing bitstreams for enhenced fidelity when dynamic bandwidth or diversion storage occurs.
 
